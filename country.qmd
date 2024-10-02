@@ -1,0 +1,31 @@
+---
+title: "Country Analysis"
+---
+
+# Country Analysis
+
+This page analyzes life expectancy, GDP per capita, and population over time for a selected country.
+
+```{python}
+#｜ echo: true
+#| eval: true
+
+# Filter data for a specific country (e.g., Japan)
+
+import matplotlib.pyplot as plt
+import pandas as pd
+
+gapminder = pd.read_csv("/Users/maxjiang/qtm350-quiz02/qtm350-quiz02/gapminder.csv")
+
+country_data = gapminder[gapminder['country'] == 'Japan']
+
+# Plot the changes over time
+plt.figure(figsize=(10, 6))
+plt.plot(country_data['year'], country_data['life_expectancy'], label='Life Expectancy')
+plt.plot(country_data['year'], country_data['gdp_per_capita'], label='GDP per Capita')
+plt.plot(country_data['year'], country_data['population_millions'], label='Population (millions)')
+plt.title('Changes in Life Expectancy, GDP per Capita, and Population for Japan')
+plt.xlabel('Year')
+plt.legend()
+plt.show()
+```

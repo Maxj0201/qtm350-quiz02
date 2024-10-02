@@ -1,0 +1,44 @@
+[
+  {
+    "objectID": "create-dataset.html",
+    "href": "create-dataset.html",
+    "title": "Create the Gapminder dataset",
+    "section": "",
+    "text": "# Import necessary libraries\nimport pandas as pd\nfrom gapminder import gapminder\n\n# Rename 'lifeExp' to 'life_expectancy' and 'gdpPercap' to 'gdp_per_capita'\ngapminder = gapminder.rename(columns={'lifeExp': 'life_expectancy',\n                                      'pop': 'population_millions', \n                                      'gdpPercap': 'gdp_per_capita'})\n\n# Convert population to millions\ngapminder['population_millions'] = gapminder['population_millions'] / 1_000_000\n\n# Create a new pandas DataFrame from the modified gapminder data\ngapminder_df = pd.DataFrame(gapminder)\n\n# Save the DataFrame as a CSV file\ngapminder_df.to_csv('gapminder.csv', index=False)\n\n# Print the first 3 rows of the DataFrame\nprint(gapminder_df.head(3))\n\n       country continent  year  life_expectancy  population_millions  \\\n0  Afghanistan      Asia  1952           28.801             8.425333   \n1  Afghanistan      Asia  1957           30.332             9.240934   \n2  Afghanistan      Asia  1962           31.997            10.267083   \n\n   gdp_per_capita  \n0      779.445314  \n1      820.853030  \n2      853.100710"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "life-gdp.html",
+    "href": "life-gdp.html",
+    "title": "Life Expectancy and GDP",
+    "section": "",
+    "text": "Life Expectancy and GDP per Capita\nThis page analyzes the relationship between life expectancy and GDP per capita using the Gapminder dataset.\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\n# Load the Gapminder dataset\ngapminder_df = pd.read_csv(\"/Users/maxjiang/qtm350-quiz02/qtm350-quiz02/gapminder.csv\")\n\n# Plot the relationship between life expectancy and GDP per capita\nplt.figure(figsize=(10, 6))\nplt.scatter(gapminder_df['gdp_per_capita'], gapminder_df['life_expectancy'])\nplt.title('Life Expectancy vs GDP per Capita')\nplt.xlabel('GDP per Capita')\nplt.ylabel('Life Expectancy')\nplt.show()"
+  },
+  {
+    "objectID": "country.html",
+    "href": "country.html",
+    "title": "Country Analysis",
+    "section": "",
+    "text": "Country Analysis\nThis page analyzes life expectancy, GDP per capita, and population over time for a selected country.\n\n#｜ echo: true\n#| eval: true\n\n# Filter data for a specific country (e.g., Japan)\n\nimport matplotlib.pyplot as plt\nimport pandas as pd\n\ngapminder = pd.read_csv(\"/Users/maxjiang/qtm350-quiz02/qtm350-quiz02/gapminder.csv\")\n\ncountry_data = gapminder[gapminder['country'] == 'Japan']\n\n# Plot the changes over time\nplt.figure(figsize=(10, 6))\nplt.plot(country_data['year'], country_data['life_expectancy'], label='Life Expectancy')\nplt.plot(country_data['year'], country_data['gdp_per_capita'], label='GDP per Capita')\nplt.plot(country_data['year'], country_data['population_millions'], label='Population (millions)')\nplt.title('Changes in Life Expectancy, GDP per Capita, and Population for Japan')\nplt.xlabel('Year')\nplt.legend()\nplt.show()"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Gapminder Data Analysis",
+    "section": "",
+    "text": "Gapminder Data Analysis\nThe Gapminder dataset contains information on life expectancy, GDP per capita, and population for 142 countries between 1952 and 2007.\n\nLife Expectancy and GDP per Capita\nLife Expectancy and Population\nCountry Analysis"
+  },
+  {
+    "objectID": "life-population.html",
+    "href": "life-population.html",
+    "title": "Life Expectancy and Population",
+    "section": "",
+    "text": "Life Expectancy and Population\nThis page analyzes the relationship between life expectancy and population using the Gapminder dataset.\n\n# Plot the relationship between life expectancy and population\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\n# Load the Gapminder dataset\ngapminder_df = pd.read_csv(\"/Users/maxjiang/qtm350-quiz02/qtm350-quiz02/gapminder.csv\")\nplt.figure(figsize=(10, 6))\nplt.scatter(gapminder_df['population_millions'], gapminder_df['life_expectancy'])\nplt.title('Life Expectancy vs Population')\nplt.xlabel('Population (millions)')\nplt.ylabel('Life Expectancy')\nplt.show()"
+  }
+]
