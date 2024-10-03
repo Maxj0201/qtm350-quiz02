@@ -15,17 +15,36 @@ This page analyzes life expectancy, GDP per capita, and population over time for
 import matplotlib.pyplot as plt
 import pandas as pd
 
+# Load the Gapminder dataset
 gapminder = pd.read_csv("/Users/maxjiang/qtm350-quiz02/qtm350-quiz02/gapminder.csv")
 
+# Filter the data for Japan
 country_data = gapminder[gapminder['country'] == 'Japan']
 
-# Plot the changes over time
+# Plot 1: Changes in Life Expectancy over time
 plt.figure(figsize=(10, 6))
-plt.plot(country_data['year'], country_data['life_expectancy'], label='Life Expectancy')
-plt.plot(country_data['year'], country_data['gdp_per_capita'], label='GDP per Capita')
-plt.plot(country_data['year'], country_data['population_millions'], label='Population (millions)')
-plt.title('Changes in Life Expectancy, GDP per Capita, and Population for Japan')
+plt.plot(country_data['year'], country_data['life_expectancy'], label='Life Expectancy', color='b')
+plt.title('Changes in Life Expectancy for Japan')
 plt.xlabel('Year')
-plt.legend()
+plt.ylabel('Life Expectancy')
+plt.grid(True)
+plt.show()
+
+# Plot 2: Changes in GDP per Capita over time
+plt.figure(figsize=(10, 6))
+plt.plot(country_data['year'], country_data['gdp_per_capita'], label='GDP per Capita', color='g')
+plt.title('Changes in GDP per Capita for Japan')
+plt.xlabel('Year')
+plt.ylabel('GDP per Capita')
+plt.grid(True)
+plt.show()
+
+# Plot 3: Changes in Population over time
+plt.figure(figsize=(10, 6))
+plt.plot(country_data['year'], country_data['population_millions'], label='Population (millions)', color='r')
+plt.title('Changes in Population for Japan')
+plt.xlabel('Year')
+plt.ylabel('Population (millions)')
+plt.grid(True)
 plt.show()
 ```
